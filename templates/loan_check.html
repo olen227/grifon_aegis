@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Aegis | Проверка кредита{% endblock %}
+
+{% block content %}
+  <section class="page-hero">
+    <div class="container page-hero-content">
+      <span class="hero-badge">Модуль оценки риска</span>
+      <h1>Проверка кредита</h1>
+      <p>
+        Введите параметры кредита на следующем этапе и получите предварительную оценку
+        финансового риска, долговой нагрузки и устойчивости бюджета.
+      </p>
+      <a class="cta-button" href="{{ url_for('index') }}">Вернуться на главную</a>
+    </div>
+  </section>
+{% endblock %}

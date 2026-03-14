@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}Aegis | О проекте{% endblock %}
+
+{% block content %}
+  <section class="about-section">
+    <div class="container about-layout">
+      <header class="about-header fade-in-up is-visible">
+        <p class="hero-badge">Миссия Aegis</p>
+        <h1>О проекте</h1>
+        <p>
+          Aegis — это инструмент финансовой осознанности для заёмщиков.
+          Мы помогаем понять риски до подписания кредитного договора.
+        </p>
+      </header>
+
+      <section class="about-card fade-in-up is-visible" aria-labelledby="problem-title">
+        <h2 id="problem-title">Проблема</h2>
+        <p>
+          Все кредитные инструменты защищают банк. Никто не защищает заёмщика.
+          Люди берут кредиты, которые не могут выплатить, потому что никто их не предупреждает.
+        </p>
+      </section>
+
+      <section class="about-card fade-in-up is-visible" aria-labelledby="solution-title">
+        <h2 id="solution-title">Наше решение</h2>
+        <p>
+          Aegis переворачивает правила. Мы используем реальные данные по кредитам,
+          чтобы помочь ВАМ понять свой риск до подписания договора.
+        </p>
+      </section>
+
+      <section class="about-card fade-in-up is-visible" aria-labelledby="flow-title">
+        <h2 id="flow-title">Как это работает</h2>
+        <div class="about-steps" role="list" aria-label="Этапы анализа">
+          <article class="about-step" role="listitem">
+            <span class="about-step-icon" aria-hidden="true">📝</span>
+            <p>Введите свои данные</p>
+          </article>
+          <span class="about-step-arrow" aria-hidden="true">→</span>
+          <article class="about-step" role="listitem">
+            <span class="about-step-icon" aria-hidden="true">📊</span>
+            <p>Мы анализируем реальные данные</p>
+          </article>
+          <span class="about-step-arrow" aria-hidden="true">→</span>
+          <article class="about-step" role="listitem">
+            <span class="about-step-icon" aria-hidden="true">✅</span>
+            <p>Получите отчёт о рисках</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="about-card fade-in-up is-visible" aria-labelledby="data-title">
+        <h2 id="data-title">Данные</h2>
+        <p>
+          На основе анализа более 255 тысяч реальных анонимизированных кредитных записей
+        </p>
+      </section>
+    </div>
+  </section>
+{% endblock %}

@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+
+{% block title %}Aegis | Результаты анализа{% endblock %}
+
+{% block content %}
+  <section class="results-section">
+    <div class="container">
+      <div class="results-layout" data-results-root>
+        <header class="results-header fade-in-up">
+          <p class="hero-badge">Результаты проверки</p>
+          <h1>Ваш кредитный риск</h1>
+          <p>
+            Мы рассчитали итоговый балл и собрали ключевые показатели по вашему профилю.
+          </p>
+        </header>
+
+        <div class="results-loading" data-results-loading>
+          <span class="loading-spinner" aria-hidden="true"></span>
+          <p>Анализируем ваш профиль...</p>
+        </div>
+
+        <div class="results-error" data-results-error hidden></div>
+
+        <section class="risk-overview fade-in-up" data-results-card hidden>
+          <div class="risk-gauge-wrap">
+            <div
+              class="risk-gauge"
+              data-risk-gauge
+              role="img"
+              aria-label="Индикатор кредитного риска"
+            >
+              <svg viewBox="0 0 220 220" aria-hidden="true">
+                <circle class="risk-gauge-track" cx="110" cy="110" r="90"></circle>
+                <circle class="risk-gauge-progress" cx="110" cy="110" r="90"></circle>
+              </svg>
+              <div class="risk-gauge-label">
+                <span class="risk-gauge-score" data-risk-score>0</span>
+                <span class="risk-gauge-unit">/ 100</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="risk-verdict" data-risk-verdict>
+            <p class="risk-verdict-text" data-risk-verdict-text>Оцениваем...</p>
+          </div>
+        </section>
+
+        <section class="metrics-grid fade-in-up" data-results-card hidden>
+          <article class="metric-card">
+            <h2>Ежемесячный платёж</h2>
+            <p class="metric-value" data-metric-monthly-payment>—</p>
+          </article>
+
+          <article class="metric-card">
+            <h2>Долговая нагрузка (DTI)</h2>
+            <p class="metric-value" data-metric-dti>—</p>
+            <p class="field-helper">Отношение ежемесячных платежей к доходу. Норма — не более 36%</p>
+            <div class="dti-compare">
+              <div class="dti-compare-labels">
+                <span>Ваш показатель</span>
+                <span>Рекомендовано: 36%</span>
+              </div>
+              <div class="dti-track" aria-hidden="true">
+                <span class="dti-recommended-marker"></span>
+                <span class="dti-fill" data-dti-fill></span>
+              </div>
+            </div>
+          </article>
+
+          <article class="metric-card">
+            <h2>Похожие заёмщики</h2>
+            <p class="metric-value" data-metric-similar-count>—</p>
+          </article>
+
+          <article class="metric-card">
+            <h2>Процент дефолтов</h2>
+            <p class="metric-value" data-metric-default-rate>—</p>
+          </article>
+        </section>
+
+        <section class="people-like-you fade-in-up" data-results-card hidden>
+          <h2>Люди как вы</h2>
+          <p data-people-like-you-text>
+            Из 0 заёмщиков с похожим профилем, 0% не смогли выплатить кредит.
+          </p>
+        </section>
+
+        <section class="stress-grid fade-in-up" data-results-card hidden>
+          <article class="stress-card" data-stress-income>
+            <h2>Потеря дохода -30%</h2>
+            <p>
+              Новый DTI: <strong data-stress-income-dti>—</strong>
+            </p>
+            <p class="stress-payability" data-stress-income-payability>—</p>
+          </article>
+
+          <article class="stress-card" data-stress-rate>
+            <h2>Рост ставки +3%</h2>
+            <p>
+              Новый платёж: <strong data-stress-rate-payment>—</strong>
+            </p>
+            <p>
+              Новый DTI: <strong data-stress-rate-dti>—</strong>
+            </p>
+          </article>
+
+          <article class="stress-card" data-stress-emergency>
+            <h2>Экстренные расходы</h2>
+            <p>
+              DTI при шоке: <strong data-stress-emergency-dti>—</strong>
+            </p>
+            <p data-stress-emergency-outlook>—</p>
+          </article>
+        </section>
+
+        <section class="recommendations-section fade-in-up" data-results-card hidden>
+          <h2>Рекомендации</h2>
+          <p class="recommendations-subtitle">
+            Персональные рекомендации сформированы на основе вашего уровня риска.
+          </p>
+          <div class="recommendations-accordion" data-recommendations-accordion>
+            <article class="recommendation-accordion-card">
+              <button
+                class="recommendation-accordion-trigger"
+                type="button"
+                aria-expanded="false"
+              >
+                <span class="recommendation-icon" aria-hidden="true">📌</span>
+                <span class="recommendation-trigger-title">Подготавливаем рекомендации...</span>
+                <span class="recommendation-trigger-chevron" aria-hidden="true">⌄</span>
+              </button>
+              <div class="recommendation-accordion-content" hidden>
+                <p>Пожалуйста, подождите несколько секунд.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js" defer></script>
+{% endblock %}

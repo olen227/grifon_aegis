@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Aegis | Главная{% endblock %}
+
+{% block content %}
+  <section class="hero-section">
+    <div class="container hero-content">
+      <span class="hero-badge">Финансовая защита заёмщика</span>
+      <h1>Стоит ли брать этот кредит?</h1>
+      <p>
+        Узнай свой реальный кредитный риск до того, как подпишешь договор.
+      </p>
+      <a class="cta-button" href="{{ url_for('loan_check') }}">Проверить мой риск</a>
+    </div>
+  </section>
+
+  <section id="analytics" class="info-section">
+    <div class="container">
+      <h2>Аналитика</h2>
+      <p>
+        Мы оцениваем кредитную нагрузку, вероятность просрочки и устойчивость бюджета, чтобы
+        вы принимали решение на основе фактов, а не эмоций.
+      </p>
+    </div>
+  </section>
+
+  <section id="about" class="info-section muted">
+    <div class="container">
+      <h2>О проекте</h2>
+      <p>
+        Aegis создан для прозрачной оценки рисков перед оформлением кредита.
+        Наша цель — помочь людям сохранить финансовую стабильность.
+      </p>
+    </div>
+  </section>
+{% endblock %}

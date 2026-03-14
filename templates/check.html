@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+
+{% block title %}Aegis | Проверка кредита{% endblock %}
+
+{% block content %}
+  <section class="check-section">
+    <div class="container">
+      <div class="check-card" data-check-form>
+        <div class="check-progress">
+          <p class="check-progress-text" data-step-text>Шаг 1 из 3</p>
+          <div class="check-progress-bar" role="progressbar" aria-valuemin="1" aria-valuemax="3" aria-valuenow="1" aria-label="Прогресс заполнения анкеты">
+            <span class="check-progress-fill" data-step-fill></span>
+          </div>
+        </div>
+
+        <h1>Проверка кредитного риска</h1>
+        <p class="check-subtitle">Ответьте на несколько вопросов, и мы подготовим предварительную оценку вашего кредитного профиля.</p>
+
+        <form id="loan-check-form" class="loan-check-form" novalidate>
+          <div class="form-slider" data-form-slider>
+            <section class="form-step is-active" data-step="1" aria-labelledby="step-1-title">
+              <h2 id="step-1-title">Личные данные</h2>
+              <div class="form-grid">
+                <div class="form-field">
+                  <label for="age">Возраст: <strong data-age-value>30</strong></label>
+                  <input id="age" name="age" type="range" min="18" max="65" value="30" data-range-output="age-value" />
+                </div>
+
+                <div class="form-field">
+                  <label for="employment_type">Тип занятости</label>
+                  <select id="employment_type" name="employment_type" required>
+                    <option value="" selected disabled>Выберите вариант</option>
+                    <option value="Работает">Работает</option>
+                    <option value="Самозанятый">Самозанятый</option>
+                    <option value="Безработный">Безработный</option>
+                    <option value="Пенсионер">Пенсионер</option>
+                  </select>
+                </div>
+
+                <div class="form-field">
+                  <label for="months_employed">Стаж на текущей работе (месяцев)</label>
+                  <input
+                    id="months_employed"
+                    name="months_employed"
+                    type="number"
+                    min="0"
+                    step="1"
+                    placeholder="Например, 24"
+                    required
+                  />
+                  <p class="field-helper">Укажите количество месяцев. Например: 3 месяца = 3, 1 год = 12, 5 лет = 60</p>
+                  <p id="months-employed-warning" class="field-helper" style="color: #fca5a5;" hidden>
+                    Проверьте значение — кажется, вы ввели слишком много месяцев
+                  </p>
+                </div>
+
+                <div class="form-field">
+                  <label for="education">Образование</label>
+                  <select id="education" name="education" required>
+                    <option value="" selected disabled>Выберите вариант</option>
+                    <option value="Среднее">Среднее</option>
+                    <option value="Бакалавр">Бакалавр</option>
+                    <option value="Магистр">Магистр</option>
+                    <option value="PhD">PhD</option>
+                  </select>
+                  <p class="field-helper">Статистически люди с высшим образованием реже допускают просрочки по кредитам.</p>
+                </div>
+              </div>
+            </section>
+
+            <section class="form-step" data-step="2" aria-labelledby="step-2-title">
+              <h2 id="step-2-title">Финансовый профиль</h2>
+              <div class="form-grid">
+                <div class="form-field">
+                  <label for="annual_income">Годовой доход</label>
+                  <input id="annual_income" name="annual_income" type="number" min="0" step="1000" placeholder="Например, 1500000" data-currency-input="annual_income_display" required />
+                  <p class="field-helper" data-currency-output="annual_income_display">0 ₽</p>
+                </div>
+
+                <div class="form-field">
+                  <label for="monthly_expenses">Ежемесячные расходы</label>
+                  <input id="monthly_expenses" name="monthly_expenses" type="number" min="0" step="1000" placeholder="Например, 70000" required />
+                </div>
+
+                <div class="form-field">
+                  <label for="current_debt">Общая сумма текущих долгов</label>
+                  <input id="current_debt" name="current_debt" type="number" min="0" step="1000" placeholder="Например, 350000" required />
+                </div>
+
+                <div class="form-field">
+                  <label for="credit_rating">Кредитный рейтинг</label>
+                  <select id="credit_rating" name="credit_rating" required>
+                    <option value="" selected disabled>Выберите вариант</option>
+                    <option value="Отличный 750+">Отличный 750+</option>
+                    <option value="Хороший 700-749">Хороший 700-749</option>
+                    <option value="Средний 650-699">Средний 650-699</option>
+                    <option value="Низкий ниже 650">Низкий ниже 650</option>
+                  </select>
+                  <p class="field-helper">Оценка вашей кредитной истории от 300 до 850. Узнать бесплатно можно на gosuslugi.ru или в приложении вашего банка.</p>
+                </div>
+              </div>
+            </section>
+
+            <section class="form-step" data-step="3" aria-labelledby="step-3-title">
+              <h2 id="step-3-title">Параметры кредита</h2>
+              <div class="form-grid">
+                <div class="form-field full-width">
+                  <label for="loan_amount">Желаемая сумма кредита: <strong data-loan-amount-value>50 000 ₽</strong></label>
+                  <input
+                    id="loan_amount"
+                    name="loan_amount"
+                    type="range"
+                    min="50000"
+                    max="5000000"
+                    step="50000"
+                    value="50000"
+                    data-range-output="loan-amount-value"
+                    data-currency-range="true"
+                  />
+                </div>
+
+                <fieldset class="form-field full-width term-group">
+                  <legend>Срок кредита</legend>
+                  <div class="term-options">
+                    <label><input type="radio" name="loan_term" value="12" required /> 12 месяцев</label>
+                    <label><input type="radio" name="loan_term" value="24" /> 24 месяца</label>
+                    <label><input type="radio" name="loan_term" value="36" /> 36 месяцев</label>
+                    <label><input type="radio" name="loan_term" value="48" /> 48 месяцев</label>
+                    <label><input type="radio" name="loan_term" value="60" /> 60 месяцев</label>
+                  </div>
+                </fieldset>
+
+                <div class="form-field">
+                  <label for="interest_rate">Процентная ставка (%)</label>
+                  <input id="interest_rate" name="interest_rate" type="number" min="0" max="100" step="0.1" placeholder="Например, 12.5" required />
+                </div>
+
+                <div class="form-field">
+                  <label for="loan_purpose">Цель кредита</label>
+                  <select id="loan_purpose" name="loan_purpose" required>
+                    <option value="" selected disabled>Выберите вариант</option>
+                    <option value="Жильё">Жильё</option>
+                    <option value="Авто">Авто</option>
+                    <option value="Образование">Образование</option>
+                    <option value="Бизнес">Бизнес</option>
+                    <option value="Личные нужды">Личные нужды</option>
+                    <option value="Медицина">Медицина</option>
+                  </select>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="form-button secondary" data-action="prev" disabled>Назад</button>
+            <button type="button" class="form-button primary" data-action="next">Далее</button>
+            <button type="submit" class="form-button glow" data-action="submit">Анализировать мой риск</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+{% endblock %}
